@@ -1,5 +1,7 @@
 from endings import *
 
+verb, firstpart, secondpart, ending = '', '', '', ''
+
 def ChangeEnding():
     desiredTense = input('Please enter the desired tense: ')
 
@@ -252,22 +254,10 @@ def ChangeEnding():
 def AskForVerb():
     global verb, firstpart, secondpart, ending
     verb = str(input('Enter any verb: '))
-    firstpart, secondpart = verb[:len(verb)//2], verb[len(verb)//2:]
-    ending = verb[-1:]
-    if len(verb) <= 5:
-        j = secondpart[:1]
-        secondpart = secondpart[1:]
-        firstpart = firstpart + j
-        ChangeEnding()
-    elif len(verb) > 5:
-        j = secondpart[:2]
-        secondpart = secondpart[2:]
-        firstpart = firstpart + j
-        ChangeEnding()
-    elif len(verb) > 5 and ending == 'ω':
-        j = secondpart[:3]
-        secondpart = secondpart[3:]
-        firstpart = firstpart + j
+    if verb[-1:] == 'ω':
+        print(verb[-1:])
+        firstpart = verb[:-1]
+        last_letter_of_theme = firstpart[-1:]
         ChangeEnding()
 
 AskForVerb() 
