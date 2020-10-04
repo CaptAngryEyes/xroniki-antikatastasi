@@ -21,32 +21,32 @@ def AskForVerb():
                     #LETTER COMBINATION
                     # τ + σ = ξ
                     if (firstpart[-2:] == 'πτ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-2]    
+                        firstpart = firstpart[:-2]
                         i = i[1:]
                         firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
                         print(newVerb)
                     elif (firstpart[-2:] == 'ττ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-2]    
+                        firstpart = firstpart[:-2]
                         i = i[1:]
                         firstpart = firstpart + 'ξ'
                         newVerb = firstpart + i
                         print(newVerb)
                     elif (firstpart[-1:] == 'τ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-1]    
+                        firstpart = firstpart[:-1]
                         i = i[1:]
                         firstpart = firstpart + 'ξ'
                         newVerb = firstpart + i
                         print(newVerb)
                     # φ + σ = ψ
                     elif (firstpart[-2:] == 'φφ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-2]    
+                        firstpart = firstpart[:-2]
                         i = i[1:]
                         firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
                         print(newVerb)
                     elif (firstpart[-1:] == 'φ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-1]    
+                        firstpart = firstpart[:-1]
                         i = i[1:]
                         firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
