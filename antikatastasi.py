@@ -10,14 +10,20 @@ def AskForVerb():
 
         if desiredTense in endings:
             print('First part = ' + firstpart)
+            symfona = ('β', 'γ', 'δ', 'ζ', 'θ', 'κ', 'λ', 'μ', 'ν', 'ξ', 'π', 'ρ', 'σ', 'τ', 'φ', 'χ', 'ψ')
+            #Almost all verbs starting with one of the letters above get an 'ε' at the start when in 'Αοριστος'
+            if desiredTense[:2] == 'ao' and verb[:1] == 'ρ':
+                firstpart = 'ερ' + firstpart            #Verbs starting with 'ρ' get an extra 'ε' and 'ρ'
+            elif desiredTense[:2] == 'ao' and verb[:1] in symfona:
+                firstpart = 'ε' + firstpart
             for k, i in endings.items():
                 if(desiredTense) == k:
                     #LETTER COMBINATION
-                    # -START- τ + σ = ξ
-                    if (firstpart[-1:] == 'τ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-1]    
+                    # τ + σ = ξ
+                    if (firstpart[-2:] == 'πτ' and i[:1] == 'σ'):
+                        firstpart = firstpart[:-2]    
                         i = i[1:]
-                        firstpart = firstpart + 'ξ'
+                        firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
                         print(newVerb)
                     elif (firstpart[-2:] == 'ττ' and i[:1] == 'σ'):
@@ -26,16 +32,21 @@ def AskForVerb():
                         firstpart = firstpart + 'ξ'
                         newVerb = firstpart + i
                         print(newVerb)
-                    # -END- τ + σ = ξ
-                    # -START- φ + σ = ψ
-                    elif (firstpart[-1:] == 'φ' and i[:1] == 'σ'):
+                    elif (firstpart[-1:] == 'τ' and i[:1] == 'σ'):
                         firstpart = firstpart[:-1]    
+                        i = i[1:]
+                        firstpart = firstpart + 'ξ'
+                        newVerb = firstpart + i
+                        print(newVerb)
+                    # φ + σ = ψ
+                    elif (firstpart[-2:] == 'φφ' and i[:1] == 'σ'):
+                        firstpart = firstpart[:-2]    
                         i = i[1:]
                         firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
                         print(newVerb)
-                    elif (firstpart[-2:] == 'φφ' and i[:1] == 'σ'):
-                        firstpart = firstpart[:-2]    
+                    elif (firstpart[-1:] == 'φ' and i[:1] == 'σ'):
+                        firstpart = firstpart[:-1]    
                         i = i[1:]
                         firstpart = firstpart + 'ψ'
                         newVerb = firstpart + i
@@ -43,7 +54,6 @@ def AskForVerb():
                     else:
                         newVerb = firstpart + i
                         print(newVerb)
-                    # -END- φ + σ = ψ
         else:
             print('none')
     else:
