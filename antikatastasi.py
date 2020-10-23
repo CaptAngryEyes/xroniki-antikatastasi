@@ -11,10 +11,10 @@ def AskForVerb():
         if desiredTense in endings:
             print('First part = ' + firstpart)
             symfona = ('β', 'γ', 'δ', 'ζ', 'θ', 'κ', 'λ', 'μ', 'ν', 'ξ', 'π', 'ρ', 'σ', 'τ', 'φ', 'χ', 'ψ')
-            #Almost all verbs starting with one of the letters above get an 'ε' at the start when in 'Αοριστος'
-            if desiredTense[:2] == 'ao' and verb[:1] == 'ρ':
+            #Almost all verbs starting with one of the letters above get an 'ε' at the start when in 'Αοριστος' or 'Παρατατικος'
+            if desiredTense[:2] == 'ao' or desiredTense[:2] == 'pa' and verb[:1] == 'ρ':
                 firstpart = 'ερ' + firstpart            #Verbs starting with 'ρ' get an extra 'ε' and 'ρ'
-            elif desiredTense[:2] == 'ao' and verb[:1] in symfona:
+            elif desiredTense[:2] == 'ao' or desiredTense[:2] == 'pa' and verb[:1] in symfona:
                 firstpart = 'ε' + firstpart
             for k, i in endings.items():
                 if(desiredTense) == k:
