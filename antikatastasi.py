@@ -1,5 +1,6 @@
 from endings import endings_ener, endings_mesi #Import the endings dictionary from the endings.py file
 
+# NEW BRANCH
 
 def AskForVerb():
     verb = str(input('Enter any verb: '))
@@ -8,7 +9,7 @@ def AskForVerb():
         #Change Ending
         desiredTense = input('Please enter the desired tense: ')
 
-        if desiredTense in endings:
+        if desiredTense in endings_ener:
             print('First part = ' + firstpart)
             symfona = ('β', 'γ', 'δ', 'ζ', 'θ', 'κ', 'λ', 'μ', 'ν', 'ξ', 'π', 'ρ', 'σ', 'τ', 'φ', 'χ', 'ψ')
             #Almost all verbs starting with one of the letters above get an 'ε' at the start when in 'Αοριστος' or 'Παρατατικος'
@@ -16,7 +17,7 @@ def AskForVerb():
                 firstpart = 'ερ' + firstpart            #Verbs starting with 'ρ' get an extra 'ε' and 'ρ'
             elif desiredTense[:2] == 'ao' or desiredTense[:2] == 'pa' and verb[:1] in symfona:
                 firstpart = 'ε' + firstpart
-            for k, i in endings.items():
+            for k, i in endings_ener.items():
                 if(desiredTense) == k:
                     #LETTER COMBINATION
                     # τ + σ = ξ
