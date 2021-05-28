@@ -1,4 +1,4 @@
-from endings import endings #Import the endings dictionary from the endings.py file
+from endings import endings_ener, endings_mesi #Import the endings dictionary from the endings.py file
 
 
 def AskForVerb():
