@@ -24,7 +24,7 @@ def get_preverb(verb):
 def add_afksisi(verb, tense, eglisi):
     # Source: https://filologikaek.blogspot.com/2019/02/7.html
 
-    symfona = ["β", "γ", "δ", "ζ", "θ", "κ", "λ", "μ", "ν", "ξ", "π", "ρ", "σ", "τ", "φ", "χ", "ψ"]
+    symfona = ["β", "γ", "δ", "ζ", "θ", "κ", "λ", "μ", "ν", "ξ", "π", "σ", "τ", "φ", "χ", "ψ"]
     fonienta = ["α", "ε", "η", "ι", "ο", "υ", "ω"]
     prothesis = ["απο", "αντι", "εκ", "εξ", "προ", 
                  "εν", "εγ", "συν", "εισ", "εσ", "ανα", "δια", 
@@ -36,8 +36,8 @@ def add_afksisi(verb, tense, eglisi):
 
     new_verb = verb
 
-    if eglisi == "oristiki":
-        if (tense == "paratatikos") or (tense == "aoristos"):
+    if eglisi == "or":
+        if (tense == "pa") or (tense == "ao"):
             try:
                 prothema = str(mo.group(1))
                 main_part = str(mo.group(2))
@@ -63,14 +63,16 @@ def add_afksisi(verb, tense, eglisi):
                         new_verb = prothema + "ω" + main_part[1:]
 
             except(AttributeError):
-                if verb[1] in symfona:
+                if verb[0] == "ρ":
+                    new_verb = "ε" + "ρ" + verb
+                elif verb[0] in symfona:
                     new_verb = "ε" + verb
-                elif verb[1] in fonienta:
-                    if verb[1] == "α":
+                elif verb[0] in fonienta:
+                    if verb[0] == "α":
                         new_verb = "η" + verb[1:]
-                    elif verb[1] == "ε":
+                    elif verb[0] == "ε":
                         new_verb = "η" + verb[1:]
-                    elif verb[1] == "ο":
+                    elif verb[0] == "ο":
                         new_verb = "ω" + verb[1:]
                     elif verb[:2] == "αι":
                         new_verb = "η" + verb[1:]
@@ -85,5 +87,25 @@ def add_afksisi(verb, tense, eglisi):
     
     return new_verb
 
-def replace(verb, tense, eglisi):
+def replace(verb, tense, eglisi, prosopo, foni):
+
+    new_verb = add_afksisi(verb, tense, eglisi)
+
+    if foni == "ener":
+        for k, v in endings_ener.items():
+            if k[:2] == tense and k[3]+k[4] == eglisi and k[6]+k[7] == prosopo:
+                new_verb = new_verb[:-1] + v
+                break
+            
+    elif foni == "mesi":
+        for k, v in endings_mesi.items():
+            if k[:2] == tense and k[3]+k[4] == eglisi and k[6]+k[7] == prosopo:
+                new_verb = new_verb[:-1] + v
+                break
+
+    return new_verb
+
+print(replace("λυω", "ao", "or", "e3", "mesi"))
+
+    
     
