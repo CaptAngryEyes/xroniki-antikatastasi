@@ -9,8 +9,8 @@ def ask_verb_info():
     return verb, tense, eglisi
 
 def get_preverb(verb):
-    if (verb[-1:] != "ω") and (verb[-4:] != "ομαι"):
-        return False
+    if (verb[-1:] != "ω") and (verb[-4:] != "ομαι"): # Μόνο ρήματα σε οριστική
+        return
     
     if verb[-1:] == "ω":
         preverb = verb[:-1]
